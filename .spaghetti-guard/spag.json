@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/naoyak/spaghetti-guard/main/schema.json",
+  "project": "template-agentic-python",
+  "rules": [
+    {
+      "name": "models-must-not-import-services",
+      "description": "Domain models must remain pure and not depend on services or external layers.",
+      "from": "src/template_agentic_python/models.py",
+      "disallow": ["src/template_agentic_python/service.py"]
+    }
+  ]
+}
