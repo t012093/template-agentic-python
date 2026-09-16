@@ -4,7 +4,7 @@ from template_agentic_python.models import TaskCreateRequest
 from template_agentic_python.service import TaskService
 
 
-def test_create_task_assigns_uuid_and_persists():
+def test_create_task_assigns_uuid_and_persists() -> None:
     service = TaskService()
     task = service.create_task(TaskCreateRequest(title="Write architecture tests"))
 
@@ -14,22 +14,25 @@ def test_create_task_assigns_uuid_and_persists():
     assert service.get_task(task.id) == task
 
 
-def test_complete_task_updates_status():
+def test_complete_task_updates_status() -> None:
     service = TaskService()
     task = service.create_task(TaskCreateRequest(title="Configure CI"))
 
     updated = service.complete_task(task.id)
     assert updated.completed is True
-    assert service.get_task(task.id).completed is True
+
+    stored = service.get_task(task.id)
+    assert stored is not None
+    assert stored.completed is True
 
 
-def test_complete_task_missing_id_raises_keyerror():
+def test_complete_task_missing_id_raises_keyerror() -> None:
     service = TaskService()
     with pytest.raises(KeyError, match="Task with ID 'non-existent' not found"):
         service.complete_task("non-existent")
 
 
-def test_list_tasks_returns_all_entries():
+def test_list_tasks_returns_all_entries() -> None:
     service = TaskService()
     t1 = service.create_task(TaskCreateRequest(title="Item 1"))
     t2 = service.create_task(TaskCreateRequest(title="Item 2"))

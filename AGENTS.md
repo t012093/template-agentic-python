@@ -36,9 +36,10 @@ flowchart TD
 
 ### 機械的完了条件 (Definition of Done: DoD)
 1. `uv run ruff check .` がエラー 0 であること。
-2. `uv run pytest` がすべて **Exit Code 0**（全合格）であること。
-3. 変更ファイルをステージした上で、`npx @naoya.k/spaghetti-guard check --staged` で境界違反がないこと。
-4. タスク完了時、知見があれば `learnings.md` に「再発防止のための1行ルール」を追記し、`STATE.md` を更新すること。
+2. `uv run mypy src tests` がエラー 0 であること。
+3. `uv run pytest` がすべて **Exit Code 0**（全合格）であること。
+4. 変更ファイルをステージした上で、`npx @naoya.k/spaghetti-guard check --staged` で境界違反がないこと。
+5. タスク完了時、知見があれば `learnings.md` に「再発防止のための1行ルール」を追記し、`STATE.md` を更新すること。
 
 ---
 

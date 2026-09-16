@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "==> Running Ruff Linter..."
+echo "==> 1. Running Ruff Linter..."
 uv run ruff check .
 
-echo "==> Running Ruff Formatter Check..."
+echo "==> 2. Running Ruff Formatter Check..."
 uv run ruff format --check .
 
-echo "==> Running Pytest with Coverage..."
+echo "==> 3. Running Mypy Strict Type Check..."
+uv run mypy src tests
+
+echo "==> 4. Running Pytest with Coverage (Unit & Contract)..."
 uv run pytest --cov=template_agentic_python --cov-report=term-missing
 
-echo "==> All checks passed successfully!"
+echo "==> All deterministic checks passed successfully!"
