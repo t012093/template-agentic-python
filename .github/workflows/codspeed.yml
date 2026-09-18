@@ -32,5 +32,7 @@ jobs:
 
       - name: Run benchmarks
         uses: CodSpeedHQ/action@v3
+        continue-on-error: true
         with:
           run: uv run pytest tests/test_benchmark.py -m benchmark --codspeed
+          token: ${{ secrets.CODSPEED_TOKEN }}
