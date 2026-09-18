@@ -1,0 +1,9 @@
+version: "0.2.13"
+project_name: "template-agentic-python"
+project_type: "python"
+architecture_enforcer: "pytestarch"
+src_dir: "src"
+architecture:
+  boundaries:
+    - from: "template_agentic_python.models"
+      disallow: ["template_agentic_python.service"]

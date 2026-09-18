@@ -16,6 +16,7 @@ dev = [
     "pytest-codspeed>=3.0.0",
     "ruff>=0.4.0",
     "mypy>=1.10.0",
+    "pytestarch>=1.5.0",
 ]
 
 [build-system]

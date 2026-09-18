@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      - name: Add virtualenv to PATH
+        run: echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
+
       - name: Set up Node.js for Spaghetti Guard
         uses: actions/setup-node@v4
         with:
